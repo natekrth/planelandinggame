@@ -115,7 +115,7 @@ while True:
             text.goto(300, 300)
             text.pendown()
             text.color('red')
-            text.write("Plane Crash! Please Investigate", align='center', font=('Arial', 20, 'bold'))
+            text.write("Planes Crashed! Please Investigate", align='center', font=('Arial', 20, 'bold'))
             time.sleep(1)
             investigation()
 

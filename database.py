@@ -1,8 +1,4 @@
-import json
 import csv
-import time
-from blackbox import BlackBox
-# from plane2 import Plane
 
 class FlightDB:
 
