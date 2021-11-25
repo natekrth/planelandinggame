@@ -1,6 +1,4 @@
-from coordinate import Coordinate
 import copy
-import csv
 from coordinate import Coordinate
 
 class BlackBox:

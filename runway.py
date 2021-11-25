@@ -1,4 +1,4 @@
-from test.coordinate import Coordinate
+from coordinate import Coordinate
 from turtle import Turtle
 import copy
 
@@ -78,7 +78,7 @@ class Runway:
         by given position, heading, length, and width using turtle
         """
         self.turtle.setheading(self.heading)
-        for i in range(2):
+        for i in range(2):                      # draw runway
             self.turtle.forward(self.length)
             self.turtle.left(90)
             self.turtle.forward(self.width)
@@ -86,7 +86,7 @@ class Runway:
         self.turtle.left(90)
         self.turtle.forward(self.width/2)
         self.turtle.left(90)
-        self.turtle.forward(self.length/1.5)
+        self.turtle.forward(self.length/1.5)   # draw ils approach line (shorter than runway)
         self.turtle.left(20)
         self.turtle.showturtle()
 

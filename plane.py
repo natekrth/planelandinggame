@@ -18,37 +18,43 @@ class Plane:
         self.turtle.shapesize(2,2,2)
         self.turtle.speed('fastest')
         self.turtle.penup()
-        self.blackbox = {}
-        self.flight_data_dt = {}
+        self.blackbox = {}          # black box dictionary key:callsign, value:flight_data_dt dictionary
+        self.flight_data_dt = {}    # flight data dictionary key:time, value:Blackbox object
 
     @property
     def callsign(self):
+        """getter method of callsign"""
         return self.__callsign
 
     @property
     def heading(self):
+        """getter method of heading"""
         return self.__heading
 
     @property
     def pos(self):
+        """getter method of position"""
         return self.__pos
 
     @property
     def color(self):
+        """getter method of color"""
         return self.__color
 
     @callsign.setter
     def callsign(self, callsign):
+        """setter method of callsign and callsign must be string"""
         if not isinstance(callsign, str):
             raise TypeError('callsign must be a string')
         self.__callsign = copy.deepcopy(callsign)
 
     @heading.setter
     def heading(self, heading):
-        if not isinstance(heading, int):
-            raise TypeError('heading must be integer')
+        """setter method of heading and heading must be positive number"""
+        if not isinstance(heading, (int, float)):
+            raise TypeError('heading must be number')
         if heading < 0:
-            raise ValueError('heading must be positive integer')
+            raise ValueError('heading must be positive number')
         self.__heading = copy.deepcopy(heading)
 
     @pos.setter
