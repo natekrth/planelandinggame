@@ -2,6 +2,7 @@ from coordinate import Coordinate
 from turtle import Turtle
 import copy
 
+
 class Runway:
 
     def __init__(self, pos, heading, width, length):
@@ -14,9 +15,8 @@ class Runway:
         self.turtle.pencolor('white')       # runway color is white
         self.turtle.hideturtle()
         self.turtle.shape('triangle')       # change turtle to be triangle symbol
-        self.turtle.shapesize(0.8,0.8,0.8)  # change turtle size
+        self.turtle.shapesize(0.8, 0.8, 0.8)  # change turtle size
         self.turtle.speed('fastest')
-
 
     @property
     def pos(self):
@@ -90,24 +90,24 @@ class Runway:
         self.turtle.left(20)
         self.turtle.showturtle()
 
-
     def ils_data(self):
         """
         ils_data method return current ils x and y coordinate, and length of ils
         max heading and min heading both are data use for checking heading for capture ils
         check_top, check_bot, check_left, check_right are data use for checking position for capture ils
         """
-        ils_x = self.turtle.xcor()
-        ils_y = self.turtle.ycor()
+        # ils length 1.5 times shorter than runway
         ils_length = self.length / 1.5
+
+        # ils heading range Plus-Minus 20 degrees from ils's heading
         max_heading = self.heading + 20
         min_heading = self.heading - 20
-        check_top = self.turtle.ycor()+10
-        check_bot = self.turtle.ycor()-10
-        check_left = self.turtle.xcor()-10
-        check_right = self.turtle.xcor()+10
+
+        # ils'hitbox 1o distances away from ils's position x,y
+        ils_x = self.turtle.xcor()
+        ils_y = self.turtle.ycor()
+        check_top = self.turtle.ycor() + 10
+        check_bot = self.turtle.ycor() - 10
+        check_left = self.turtle.xcor() - 10
+        check_right = self.turtle.xcor() + 10
         return ils_x, ils_y, check_top, check_bot, check_left, check_right, self.heading, max_heading, min_heading, ils_length
-
-
-
-
