@@ -50,10 +50,57 @@ def draw_radar():
     text.penup()
 
 plane_list = []
+runway_color_list = ['black', 'white', 'pink', 'orange']
 name = ['TG', 'AA', "KLM", "AF", "QF", "BA", "JL", "QR", "MH", "EY"]
 radar = Screen()
 radar.setup(1000,1000)
 radar.title("Plane Landing Game")
+
+database = FlightDB("test")
+text = Turtle()
+text.hideturtle()
+
+bg_color = ''
+runway_c = ''
+while True:
+    radar_color = radar.textinput("Plane Landing Game", "Pick Radar Color 1.Dark/2.White (1-2)").lower()
+    if radar_color == "1" or radar_color == 'dark':
+        bg_color = "black"
+        break
+    elif radar_color == "2" or radar_color == 'white':
+        bg_color = "white"
+        break
+    else:
+        print("Pick only 1.Dark or 2.White")
+        continue
+
+while True:
+    question = "Pick Runway Color 1.Black/2.White/3.Pink/4.Orange (1-3)"
+    runway_color = radar.textinput("Plane Landing Game", question).lower()
+    if runway_color == "1" or runway_color == "black":
+        if bg_color == 'black':
+            print("Radar and Runway can't be the same color")
+            continue
+        else:
+            runway_c = runway_color_list[0]
+            break
+    elif runway_color == "2" or runway_color == "white":
+        if bg_color == 'white':
+            print("Radar and Runway can't be the same color")
+            continue
+        else:
+            runway_c = runway_color_list[1]
+            break
+    elif runway_color == "3" or runway_color == "pink":
+        runway_c = runway_color_list[2]
+        break
+    elif runway_color == "4" or runway_color == "orange":
+        runway_c = runway_color_list[3]
+        break
+    else:
+        print("Pick only 1.Black or 2.White or 3.Pink or 4.Orange")
+        continue
+
 while True:
     sweep = radar.textinput("Plane Landing Game", "Pick Radar sweep speed 1-3")
     if sweep == '1':
@@ -68,10 +115,8 @@ while True:
     else:
         print("Wrong Level")
         continue
-database = FlightDB("test")
-text = Turtle()
-text.hideturtle()
-text.screen.bgcolor('black')
+
+text.screen.bgcolor(bg_color)
 text.speed("fastest")
 text.pencolor('green')
 draw_radar()
@@ -81,12 +126,12 @@ draw_radar()
 pos = Coordinate(random.randint(-400, 400),random.randint(-400, 400))
 heading = random.randint(0, 360)
 length = random.randint(100,300)
-runway = Runway(pos=pos, heading=heading, width=25, length=length)
+runway = Runway(pos=pos, heading=heading, width=25, length=length, color=runway_c)
 runway.draw()
 
 
 # init plane bot
-for i in range(10): # int(ask)
+for i in range(10):
     pos = Coordinate(random.randint(-400, 400),random.randint(-400, 400))
     heading = random.randint(0, 360)
     bot = Plane(callsign=name[i], heading=heading, pos=pos)

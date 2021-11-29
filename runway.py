@@ -5,14 +5,15 @@ import copy
 
 class Runway:
 
-    def __init__(self, pos, heading, width, length):
+    def __init__(self, pos, heading, width, length, color):
         self.pos = pos
         self.heading = heading
         self.width = width
         self.length = length
+        self.color = color
         self.turtle = Turtle()
         self.turtle.pensize(2)
-        self.turtle.pencolor('white')       # runway color is white
+        self.turtle.pencolor(self.color)       # runway color is white
         self.turtle.hideturtle()
         self.turtle.shape('triangle')       # change turtle to be triangle symbol
         self.turtle.shapesize(0.8, 0.8, 0.8)  # change turtle size
@@ -37,6 +38,11 @@ class Runway:
     def length(self):
         """getter method of length"""
         return self.__length
+
+    @property
+    def color(self):
+        """getter method of color"""
+        return self.__color
 
     @pos.setter
     def pos(self, pos):
@@ -71,6 +77,13 @@ class Runway:
         if length < 0:
             raise ValueError('length must be positive integer')
         self.__length = copy.deepcopy(length)
+
+    @color.setter
+    def color(self, color):
+        """setter method color and color must be string"""
+        if not isinstance(color, str):
+            raise TypeError('color must be string')
+        self.__color = copy.deepcopy(color)
 
     def draw(self):
         """

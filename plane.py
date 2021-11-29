@@ -6,6 +6,7 @@ import time
 import copy
 
 
+
 class Plane:
 
     def __init__(self, callsign, heading, pos, color='green'):
