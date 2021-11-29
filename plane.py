@@ -118,7 +118,6 @@ class Plane:
         self.flight_data_dt[dt] = data                         # put key:time, value: Blackbox
         self.blackbox[self.callsign] = self.flight_data_dt       # put key:callsign, value:flight_data_dt dict
         db.insert(self.callsign, self.flight_data_dt)            # insert to database
-        print(self.flight_data_dt)
 
     def position_data(self, distance):
         """
