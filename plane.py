@@ -164,7 +164,7 @@ class Plane:
         """hide plane on the screen"""
         self.turtle.hideturtle()
 
-    def text(self):
+    def show_flightdata(self):
         """
         write flight data on the screen
         1.callsign
