@@ -92,12 +92,12 @@ class Plane:
         self.turtle.forward(speed)
 
     def left(self):
-        """method turn left by 2 degree"""
-        self.turtle.left(2)
+        """method turn left by 3 degree"""
+        self.turtle.left(3)
 
     def right(self):
-        """method turn right by 2 degree"""
-        self.turtle.right(2)
+        """method turn right by 3 degree"""
+        self.turtle.right(3)
 
     def show_pos(self):
         """method return position x and position y of a plane"""

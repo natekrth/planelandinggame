@@ -94,7 +94,7 @@ while True:
 
 # GUI receive input from player to pick runway color
 while True:
-    question = "Pick Runway Color 1.Black/2.White/3.Pink/4.Orange (1-3)"
+    question = "Pick Runway Color 1.Black/2.White/3.Pink/4.Orange (1-4)"
     runway_color = radar.textinput("Plane Landing Game", question).lower()
     if runway_color == "1" or runway_color == "black":
         if bg_color == 'black':                                 # check radar color and background color is the same
@@ -145,8 +145,8 @@ text.screen.bgcolor(bg_color)   # set background color by user input
 draw_radar()
 
 
-# draw runway with random position, random heading, and random length
-pos = Coordinate(random.randint(-400, 400),random.randint(-400, 400))
+# draw runway with random heading, random length
+pos = Coordinate(0, 0)
 heading = random.randint(0, 360)
 length = random.randint(100,300)
 runway = Runway(pos=pos, heading=heading, width=25, length=length, color=runway_c)
